@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euo pipefail
+
+ROOT=$(pwd)
+for directory in $BUILDKITE_PLUGIN_FOR_EACH_DIRECTORY_PARENT; do
+    cd $ROOT
+    $BUILDKITE_COMMAND
+    cd $ROOT
+done

@@ -1,0 +1,13 @@
+name: For Each Directory
+description: Execute a command in each directory provided
+author: https://github.com/xzyfer
+requirements: []
+configuration:
+  properties:
+    # directories:
+    #   type: array
+    #   items:
+    #     type: string
+    parent:
+      type: string
+  additionalProperties: false
