@@ -10,10 +10,10 @@ ROOT=$(pwd)
 for directory in $BUILDKITE_PLUGIN_FOR_EACH_DIRECTORY_PARENT/*; do
     echo "--- Changing working directory to $BUILDKITE_PLUGIN_FOR_EACH_DIRECTORY_PARENT/$directory"
     
-    exec << EOF
-        cd $ROOT/$directory
-        $BUILDKITE_COMMANDn
-    EOF
+    exec <<EOF
+    cd $ROOT/$directory
+    $BUILDKITE_COMMANDn
+EOF
 done
 
 cd $ROOT
