@@ -1,12 +1,19 @@
 #!/bin/bash
-set -euo pipefail
+set -euox pipefail
+
+exec() {
+    eval "$(cat /dev/stdin)"
+}
 
 ROOT=$(pwd)
 
 for directory in $BUILDKITE_PLUGIN_FOR_EACH_DIRECTORY_PARENT/*; do
     echo "--- Changing working directory to $BUILDKITE_PLUGIN_FOR_EACH_DIRECTORY_PARENT/$directory"
-    cd $ROOT/$directory
-    eval "$BUILDKITE_COMMAND"
+    
+    exec << EOF
+        cd $ROOT/$directory
+        $BUILDKITE_COMMANDn
+    EOF
 done
 
 cd $ROOT
