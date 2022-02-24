@@ -3,7 +3,8 @@ set -euo pipefail
 
 ROOT=$(pwd)
 for directory in $BUILDKITE_PLUGIN_FOR_EACH_DIRECTORY_PARENT; do
-    cd $ROOT
+    echo "--- Changing working directory to $BUILDKITE_PLUGIN_FOR_EACH_DIRECTORY_PARENT/$directory"
+    cd $BUILDKITE_PLUGIN_FOR_EACH_DIRECTORY_PARENT/$directory
     $BUILDKITE_COMMAND
     cd $ROOT
 done
